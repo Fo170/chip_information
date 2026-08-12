@@ -1,0 +1,30 @@
+{
+  "name": "chip_information",
+  "version": "1.0.0",
+  "description": "Affiche les caractéristiques CPU/Flash des microcontrôleurs ESP8266 et ESP32 via le port série",
+  "keywords": ["esp8266", "esp32", "chip", "cpu", "flash", "serial", "information", "debug"],
+  "repository": { "type": "git", "url": "https://github.com/Fo170/chip_information.git" },
+  "authors": [
+    { "name": "Olivier FOURNET", "email": "olivier.fournet@free.fr", "url": "https://github.com/Fo170", "maintainer": true }
+  ],
+  "license": "GPL-3.0-only",
+  "homepage": "https://github.com/Fo170/chip_information",
+  "frameworks": "arduino",
+  "platforms": ["espressif8266", "espressif32"],
+  "headers": "chip_information.h",
+  "examples": [
+    {
+      "name": "ESP32 : informations chip",
+      "base": "examples",
+      "files": ["ESP32_ChipInfo/ESP32_ChipInfo.ino"]
+    },
+    {
+      "name": "ESP8266 : informations chip",
+      "base": "examples",
+      "files": ["ESP8266_ChipInfo/ESP8266_ChipInfo.ino"]
+    }
+  ],
+  "export": {
+    "exclude": [".github", "docs", "tests", "*.md", "*.yml", "*.txt"]
+  }
+}
