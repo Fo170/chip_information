@@ -1,6 +1,6 @@
-// chip_information v1.0.0
+// chip_information v1.1.0
 // Librairie Arduino header-only : affiche les caractéristiques CPU/Flash
-// des microcontrôleurs ESP8266 et ESP32 via le port série.
+// des microcontrôleurs ESP8266, ESP32, AVR (Uno...) et SAM (Due) via le port série.
 //
 // Auteur : Olivier FOURNET (https://github.com/Fo170)
 // Licence : GPL-3.0-only
@@ -65,6 +65,67 @@ inline void chip_information(void)
   Serial.printf("getChipCores : %u\n", ESP.getChipCores());
   Serial.printf("Version Sdk : %s\n", ESP.getSdkVersion());
   Serial.printf("getFlashChipSize : %u bytes\n", ESP.getFlashChipSize());
+}
+
+#elif defined(__AVR__)
+#include <avr/io.h>
+
+#if defined(__AVR_ATmega328P__)
+#define CHIP_INFORMATION_MODEL "ATmega328P"
+#elif defined(__AVR_ATmega2560__)
+#define CHIP_INFORMATION_MODEL "ATmega2560"
+#elif defined(__AVR_ATmega168__)
+#define CHIP_INFORMATION_MODEL "ATmega168"
+#elif defined(__AVR_ATmega8__)
+#define CHIP_INFORMATION_MODEL "ATmega8"
+#elif defined(__AVR_ATtiny84__)
+#define CHIP_INFORMATION_MODEL "ATtiny84"
+#elif defined(__AVR_ATtiny85__)
+#define CHIP_INFORMATION_MODEL "ATtiny85"
+#else
+#define CHIP_INFORMATION_MODEL "AVR"
+#endif
+
+inline void chip_information(void)
+{
+  Serial.println(F("\n\nModèle : "));
+  Serial.println(CHIP_INFORMATION_MODEL);
+  Serial.print(F("Fréquence du processeur : "));
+  Serial.print(F_CPU / 1000000UL);
+  Serial.println(F(" MHz"));
+  Serial.print(F("Mémoire flash : "));
+  Serial.print(FLASHEND + 1);
+  Serial.print(F(" octets ("));
+  Serial.print((FLASHEND + 1) / 1024);
+  Serial.println(F(" Ko)"));
+#if defined(RAMEND)
+  const unsigned int ram_size = (RAMEND - 0x100) + 1; // la SRAM AVR commence toujours à 0x100
+  Serial.print(F("Mémoire SRAM : "));
+  Serial.print(ram_size);
+  Serial.print(F(" octets ("));
+  Serial.print(ram_size / 1024);
+  Serial.println(F(" Ko)"));
+#endif
+#if defined(E2END)
+  Serial.print(F("Mémoire EEPROM : "));
+  Serial.print(E2END + 1);
+  Serial.println(F(" octets"));
+#endif
+}
+
+#undef CHIP_INFORMATION_MODEL
+
+#elif defined(ARDUINO_ARCH_SAM)
+
+// Arduino Due (SAM3X8E, Cortex-M3)
+inline void chip_information(void)
+{
+  Serial.println(F("\n\nModèle : SAM3X8E (Cortex-M3)"));
+  Serial.print(F("Fréquence du processeur : "));
+  Serial.print(F_CPU / 1000000UL);
+  Serial.println(F(" MHz"));
+  Serial.println(F("Mémoire flash : 512 Ko"));
+  Serial.println(F("Mémoire SRAM : 96 Ko"));
 }
 
 #endif

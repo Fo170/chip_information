@@ -1,8 +1,8 @@
 {
   "name": "chip_information",
-  "version": "1.0.0",
-  "description": "Affiche les caractéristiques CPU/Flash des microcontrôleurs ESP8266 et ESP32 via le port série",
-  "keywords": ["esp8266", "esp32", "chip", "cpu", "flash", "serial", "information", "debug"],
+  "version": "1.1.0",
+  "description": "Affiche les caractéristiques CPU/Flash des microcontrôleurs ESP8266, ESP32, AVR et SAM via le port série",
+  "keywords": ["esp8266", "esp32", "avr", "sam", "chip", "cpu", "flash", "serial", "information", "debug"],
   "repository": { "type": "git", "url": "https://github.com/Fo170/chip_information.git" },
   "authors": [
     { "name": "Olivier FOURNET", "email": "olivier.fournet@free.fr", "url": "https://github.com/Fo170", "maintainer": true }
@@ -10,7 +10,7 @@
   "license": "GPL-3.0-only",
   "homepage": "https://github.com/Fo170/chip_information",
   "frameworks": "arduino",
-  "platforms": ["espressif8266", "espressif32"],
+  "platforms": ["espressif8266", "espressif32", "atmelavr", "atmelsam"],
   "headers": "chip_information.h",
   "examples": [
     {
@@ -22,6 +22,16 @@
       "name": "ESP8266 : informations chip",
       "base": "examples",
       "files": ["ESP8266_ChipInfo/ESP8266_ChipInfo.ino"]
+    },
+    {
+      "name": "Uno : informations chip",
+      "base": "examples",
+      "files": ["Uno_ChipInfo/Uno_ChipInfo.ino"]
+    },
+    {
+      "name": "Due : informations chip",
+      "base": "examples",
+      "files": ["Due_ChipInfo/Due_ChipInfo.ino"]
     }
   ],
   "export": {
