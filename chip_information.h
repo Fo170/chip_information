@@ -15,7 +15,7 @@
 #if defined(ESP8266)
 #include <Esp.h>
 
-inline void chip_information_ESP8266(void)
+inline void chip_information(void)
 {
   Serial.printf("\n\nVersion Sdk : %s\n", ESP.getSdkVersion());
   Serial.printf("Version de base : %s\n", ESP.getCoreVersion().c_str());
@@ -33,7 +33,7 @@ inline void chip_information_ESP8266(void)
 
 // SPDX-FileCopyrightText: 2010-2022 Espressif Systems (Shanghai) CO LTD
 // SPDX-License-Identifier: CC0-1.0
-inline void chip_information_ESP32(void)
+inline void chip_information(void)
 {
   // Print chip information
   esp_chip_info_t chip_info;

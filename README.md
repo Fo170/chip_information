@@ -48,8 +48,7 @@ void setup() {
   Serial.begin(115200);
   delay(500);
 
-  chip_information_ESP8266();   // sur ESP8266
-  chip_information_ESP32();     // sur ESP32
+  chip_information();
 }
 
 void loop() {}
@@ -57,11 +56,8 @@ void loop() {}
 
 # Fonctions disponibles
 
-`chip_information_ESP8266()`
-Affiche les informations du chip ESP8266 : version SDK, version du core, version et mode de démarrage, fréquence du processeur, heap libre.
-
-`chip_information_ESP32()`
-Affiche les informations du chip ESP32 : nom du chip, nombre de cœurs, WiFi/BT/BLE, révision du silicium, taille et type de flash, minimum de heap libre, fréquence, modèle, version SDK.
+`chip_information()`
+Fonction générique, identique sur les deux plateformes. Sur ESP8266 elle affiche : version SDK, version du core, version et mode de démarrage, fréquence du processeur, heap libre. Sur ESP32 : nom du chip, nombre de cœurs, WiFi/BT/BLE, révision du silicium, taille et type de flash, minimum de heap libre, fréquence, modèle, version SDK.
 
 # Support des plates-formes
 

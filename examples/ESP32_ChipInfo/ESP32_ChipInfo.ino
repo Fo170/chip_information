@@ -5,7 +5,7 @@ void setup()
 {
   Serial.begin(115200);
   delay(500);
-  chip_information_ESP32();
+  chip_information();
 }
 
 void loop()
