@@ -10,6 +10,9 @@
 #ifndef CHIP_INFORMATION_H
 #define CHIP_INFORMATION_H
 
+
+// Version de la librairie (source UNIQUE — agrégée par liste_lib.h)
+#define __CHIP_INFORMATION_H_VERSION__ "1.1.0"
 #include <Arduino.h>
 
 #if defined(ESP8266)
