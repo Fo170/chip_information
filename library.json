@@ -1,6 +1,6 @@
 {
   "name": "chip_information",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Affiche les caractéristiques CPU/Flash des microcontrôleurs ESP8266, ESP32, AVR et SAM via le port série",
   "keywords": ["esp8266", "esp32", "avr", "sam", "chip", "cpu", "flash", "serial", "information", "debug"],
   "repository": { "type": "git", "url": "https://github.com/Fo170/chip_information.git" },
